@@ -1,4 +1,4 @@
-# cacheman-redis-promise
+# cacheman-redis-promised
 
 Basically an extension of [cacheman-redis](https://github.com/cayasso/cacheman-redis) module that uses promises.
 
