@@ -1,18 +1,23 @@
 # cacheman-redis-promise
 
-Basically an extension of [cacheman-redis](https://github.com/cayasso/cacheman-redis) module that uses promises and is able to disable caching without messing up all code.
+Basically an extension of [cacheman-redis](https://github.com/cayasso/cacheman-redis) module that uses promises.
 
 ## Instalation
 
 ``` bash
-$ npm install cacheman-redis-promise
+$ npm install cacheman-redis-promised
 ```
 
 ## Usage
 
 ```javascript
-var cache = require('cacheman-redis-promise')({host: '127.0.0.1', port: 6379})
-
+const cache = require('cacheman-redis-promise')({host: '127.0.0.1', port: 6379})
+```
+or
+```javascript
+const cache = require('cacheman-redis-promise')('redis://.....')
+```
+```javascript
 cache.set('some key', 'hello there').then(function(data) {
 	console.log(data); // -> 'hello there'
 	return cache.get('some key');
@@ -22,19 +27,3 @@ cache.set('some key', 'hello there').then(function(data) {
 }).then(function() {
 	console.log('value deleted');
 });
-
-// Or you can use fetch to simplify common cache operations
-// (like get, then check and then set if there is no value)
-
-var fn = function() {
-	return 'hey there';
-	// Or you can also return a promise here
-};
-
-// fn will be executed only if there is no value under 'some key' key
-// and its result will be put into cache under this key
-// But if there was value under the key, it will be returned without executing fn
-cache.fetch('some key', fn).then(function(data) {
-	console.log(data); // -> 'hey there'
-});
-```
