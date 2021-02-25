@@ -1,6 +1,6 @@
 {
   "name": "cacheman-redis-promised",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Extension of cacheman-redis that uses promises",
   "main": "index.js",
   "scripts": {
