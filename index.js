@@ -37,7 +37,8 @@ module.exports = function(options) {
 					error ? reject(error) : resolve();
 				});
 			});
-		}
+		},
+		redis
 	};
 
 	return cache;
